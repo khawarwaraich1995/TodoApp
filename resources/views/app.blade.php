@@ -126,18 +126,6 @@
                 $('#datetimepicker1').datetimepicker();
             });
             $('[data-toggle="tooltip"]').tooltip();
-
-            function formatDate(date) {
-                return (
-                    date.getDate() +
-                    "/" +
-                    (date.getMonth() + 1) +
-                    "/" +
-                    date.getFullYear()
-                );
-            }
-
-            var currentDate = formatDate(new Date())
         };
     </script>
 </body>
