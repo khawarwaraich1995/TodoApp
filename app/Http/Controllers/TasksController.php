@@ -14,8 +14,15 @@ class TasksController extends Controller
      */
     public function index(Request $request)
     {
+        //Setting Timezone according to user location
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $ipInfo = file_get_contents('http://ip-api.com/json/' . $ip);
+        $ipInfo = json_decode($ipInfo);
+        if(isset($ipInfo->timezone)){
+            $timezone = $ipInfo->timezone;
+        }
         $tasks = Tasks::orderBy('id', 'desc')->get();
-        return view('app', compact('tasks'));
+        return view('app', compact('tasks', 'timezone'));
     }
 
     /**

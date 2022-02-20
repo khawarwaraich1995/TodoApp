@@ -73,8 +73,8 @@
                     </div>
                     <div class="col-auto m-1 p-0 px-3">
                         <div class="row">
-                            <div data-toggle="tooltip" data-original-title="{{config('app.timezone')}}" class="col-auto d-flex align-items-center rounded bg-white border border-warning">
-                                <h6 class="text my-2 pr-2">{{ \Carbon\Carbon::parse($task->due_date)->format('g:i A, d M')}}</h6>
+                            <div data-toggle="tooltip" data-original-title="{{$timezone ?? ''}}" class="col-auto d-flex align-items-center rounded bg-white border border-warning">
+                                <h6 class="text my-2 pr-2">{{ \Carbon\Carbon::parse($task->due_date, config('app.timezone'))->setTimezone($timezone)->format('g:i A, d M')}}</h6>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                             <div class="col-auto d-flex align-items-center pr-2">
                                 <i class="fa fa-info-circle my-2 px-2 text-black-50 btn" data-toggle="tooltip"
                                     data-placement="bottom" title="" data-original-title="Due date"></i>
-                                <label  class="date-label my-2 text-black-50">{{ \Carbon\Carbon::parse($task->due_date)->format('g:i A, d M')}}</label>
+                                <label  class="date-label my-2 text-black-50">{{ \Carbon\Carbon::parse($task->due_date, config('app.timezone'))->setTimezone($timezone)->format('g:i A, d M')}}</label>
                             </div>
                         </div>
                     </div>
